@@ -82,12 +82,19 @@ function handleItemCheckClicked() {
   });
 }
 
+function deleteListItem(itemId) {
+  console.log(`deleted item ${itemId} from shopping list`)
+  const itemIndex = STORE.findIndex(item => item.id === itemId);
+  STORE.splice(itemIndex, 1);
+}
 
 function handleDeleteItemClicked() {
     $('.js-shopping-list').on('click', '.js-item-delete', event => {
         console.log('`handleItemDeleteItemClicked` ran');
         const id2 = getItemIdFromElement(event.currentTarget);
-    $(`.${id2}`).parent().addClass('hidden');
+    
+        deleteListItem(id2);
+        renderShoppingList();
     
     });
   // this function will be responsible for when users want to delete a shopping list
