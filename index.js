@@ -1,3 +1,4 @@
+/* eslint-disable indent */
 'use strict';
 
 const STORE = [
@@ -83,6 +84,12 @@ function handleItemCheckClicked() {
 
 
 function handleDeleteItemClicked() {
+    $('.js-shopping-list').on('click', '.js-item-delete', event => {
+        console.log('`handleItemDeleteItemClicked` ran');
+        const id2 = getItemIdFromElement(event.currentTarget);
+    $(`.${id2}`).parent().addClass('hidden');
+    
+    });
   // this function will be responsible for when users want to delete a shopping list
   // item
   console.log('`handleDeleteItemClicked` ran')
